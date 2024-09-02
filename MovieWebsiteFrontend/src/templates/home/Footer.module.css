@@ -1,0 +1,67 @@
+.container
+{
+    display: flex;
+    height: 200px;
+    justify-content: space-around;
+    width: auto;
+    margin: auto auto;
+    padding: 30px;
+    background-color: rgb(28,28,28);
+}
+
+.profile
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile > ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+.profile > ul > li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recent
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.recent > ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+.recent > ul > li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.customer
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.customer > ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+.customer > ul > li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

@@ -1,0 +1,179 @@
+.container
+{
+    width: 1536px;
+    height: fit-content;
+    padding: 0;
+    margin: 0px auto;
+}
+
+.movielist_header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movielist_header > h1
+{
+    margin-bottom: 30px;
+}
+
+.movielist_header > button
+{
+    border: none;
+    background-color: transparent;
+    color: gray;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.2s;
+    
+}
+.movielist_header > button:hover
+{
+    cursor: pointer;
+    color: rgb(170, 170, 170);
+    transition: color 0.2s;
+}
+
+.movcont
+{
+    width: 100%;
+    overflow: hidden;
+    margin: 70px auto;
+}
+
+
+.moviediv
+{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.movielist
+{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    column-gap: 30px;
+    width: 1387px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.prev
+{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(28,28,28);
+    opacity: 0.8;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.next
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(28,28,28);
+    opacity: 0.8;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.next:hover
+{
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.prev:hover
+{
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+
+
+@media(max-width:1535px)
+{
+    .container
+    {
+        width: 1280px;
+    }
+    .movielist
+    {
+        width: 1156px;
+    }
+}
+@media(max-width:1279px)
+{
+    .container
+    {
+        width: 1024px;
+    }
+    .movielist
+    {
+        width: 925px;
+    }
+}
+@media(max-width:1023px)
+{
+    .container
+    {
+        max-width: 768px;
+    }
+    .movielist
+    {
+        width: 694px;
+    }
+
+}
+@media(max-width:767px)
+{
+    .container
+    {
+        max-width: 640px;
+    }
+    .movielist
+    {
+        width: 578px;
+    }
+    
+}
+@media(max-width:639px)
+{
+    .container
+    {
+        max-width: 475px;
+    }
+    .movielist
+    {
+        width: 429px;
+    }
+}
+@media(max-width:474px)
+{
+    
+}

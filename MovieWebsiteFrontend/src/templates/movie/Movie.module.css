@@ -1,0 +1,81 @@
+.container
+{
+    height: 600px;
+    width: 100%;
+    margin: 0 auto;
+    background-position: 50% center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: white;
+}
+
+.container > div
+{
+    width: auto;
+    background-color: rgb(18,18,18,0.4);
+    height: 100%;
+}
+
+.book
+{
+    width: 60%;
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    margin: auto;
+    height: 100%;
+}
+
+.card
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.card > img
+{
+    width: auto;
+    height: calc(100vw*0.22);
+    border-radius: 5px;
+}
+
+.info
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info > div
+{
+    display: flex;
+}
+
+.info > div > span
+{
+    margin-right: 20px;
+    padding: 5px 10px;
+    background-color: rgb(28,28,28);
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 0;
+}
+
+.btn
+{
+    width: fit-content;
+    margin: 0;
+    margin-right: auto;
+    background-color: rgb(210, 30, 30);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+}
+
+.btn:hover
+{
+    cursor: pointer;
+}
