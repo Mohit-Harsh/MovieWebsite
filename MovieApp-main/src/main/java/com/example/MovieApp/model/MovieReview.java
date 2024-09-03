@@ -5,31 +5,35 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
+
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Booking
+public class MovieReview
 {
     @Id
     @UuidGenerator(style = UuidGenerator.Style.TIME)
-    private UUID bid;
+    private UUID rid;
 
-    @Enumerated(EnumType.STRING)
-    private BookingStatus status = BookingStatus.Confirmed;
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column(precision = 1)
+    private int rating;
 
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp timestamp;
+    @ManyToOne
+    private Movie movie;
 
-    private String seatno;
-    private UUID showid;
-    private UUID userid;
+    @ManyToMany
+    private List<MovieUser> user;
 
 }

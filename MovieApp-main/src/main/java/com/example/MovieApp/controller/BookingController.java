@@ -5,6 +5,7 @@ import com.example.MovieApp.model.Booking;
 import com.example.MovieApp.model.BookingStatus;
 import com.example.MovieApp.repo.BookingRepo;
 import org.antlr.v4.runtime.misc.Pair;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,9 @@ public class BookingController
 {
     @Autowired
     private BookingRepo repo;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @GetMapping("")
     public List<Booking> getAllBookings()
@@ -51,6 +55,8 @@ public class BookingController
                 booking.setSeatno(seat);
 
                 Booking b = repo.save(booking);
+
+                rabbitTemplate.convertAndSend("topic_exchange","booking_route",b);
 
             }
             else

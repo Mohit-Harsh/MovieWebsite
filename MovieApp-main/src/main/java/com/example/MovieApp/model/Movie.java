@@ -44,4 +44,8 @@ public class Movie
     @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
     private List<MovieShow> movieshows;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
+    private List<MovieReview> reviews;
+
 }
