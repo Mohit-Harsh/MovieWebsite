@@ -1,0 +1,8 @@
+langchain
+langchain-core
+langchain-community
+pandas
+numpy
+fastapi[standard]
+sentence-transformers
+faiss-cpu

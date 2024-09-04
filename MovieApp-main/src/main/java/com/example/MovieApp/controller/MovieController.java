@@ -1,6 +1,7 @@
 package com.example.MovieApp.controller;
 
 import com.example.MovieApp.DTO.MovieDTO;
+import com.example.MovieApp.DTO.RecommendDTO;
 import com.example.MovieApp.model.*;
 import com.example.MovieApp.repo.MovieRepo;
 import com.example.MovieApp.repo.TheatreRepo;
@@ -29,6 +30,26 @@ public class MovieController
     public List<Movie> findAll()
     {
         return repo.findAll();
+    }
+
+    @PostMapping("/all")
+    public List<RecommendDTO> findAllById(@RequestBody List<UUID> ids)
+    {
+        List<RecommendDTO> recommendDTOS = new ArrayList<>();
+
+        for(Movie mov : repo.findAllById(ids))
+        {
+            RecommendDTO recommendDTO = new RecommendDTO();
+            recommendDTO.setMid(mov.getMid());
+            recommendDTO.setTitle(mov.getTitle());
+            recommendDTO.setPlot(mov.getPlot());
+            recommendDTO.setGenre(mov.getGenre());
+            recommendDTO.setCast(mov.getMovieCast());
+
+            recommendDTOS.add(recommendDTO);
+        }
+
+        return recommendDTOS;
     }
 
     @GetMapping("/{id}")

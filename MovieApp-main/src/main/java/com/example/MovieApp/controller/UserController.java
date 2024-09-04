@@ -1,11 +1,13 @@
 package com.example.MovieApp.controller;
 
 import com.example.MovieApp.model.MovieUser;
+import com.example.MovieApp.repo.MovieRepo;
 import com.example.MovieApp.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -16,6 +18,15 @@ public class UserController
 {
     @Autowired
     private UserRepo repo;
+
+    @Autowired
+    private MovieRepo mrepo;
+
+    @PostMapping("/{userid}/recommendation")
+    public void setRecommendations(@RequestBody List<UUID> mids, @PathVariable UUID userid)
+    {
+        repo.findById(userid).get().setRecommendation(mrepo.findAllById(mids));
+    }
 
     @PostMapping("/signin")
     public Map<String,String> getUserId(@RequestBody Map<String,String> req)

@@ -27,6 +27,9 @@ public class MovieUser
     @Column(length = 20)
     private String password;
 
+    @OneToMany
+    private List<Movie> recommendation;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<MovieReview> review;
