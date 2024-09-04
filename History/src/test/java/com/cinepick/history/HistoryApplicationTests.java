@@ -1,4 +1,4 @@
-package com.cinepick.history.History;
+package com.cinepick.history;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

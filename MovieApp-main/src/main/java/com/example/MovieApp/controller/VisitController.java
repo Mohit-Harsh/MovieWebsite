@@ -22,7 +22,6 @@ public class VisitController
         Visited visited = new Visited();
         visited.setMid(req.get("mid"));
         visited.setUserid(req.get("userid"));
-        visited.setDate(new Date());
 
         System.out.println(visited);
 
