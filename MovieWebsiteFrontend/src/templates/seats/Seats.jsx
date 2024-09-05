@@ -6,7 +6,7 @@ import screen_icon from '../../assets/screen.png';
 import axios from 'axios';
 
 
-export default function Seats()
+export default function Seats({uid})
 {
     const obj = useLocation();
 
@@ -37,7 +37,7 @@ export default function Seats()
     {
         async function fetchData()
         {
-            let res = await axios.post("http://localhost:8080/api/booking/seats",{"sid":data['sid'],"date":advanceDate});
+            let res = await axios.post("http://localhost:8080/api/booking/seats",{"sid":data['sid'],"date":advanceDate,"uid":uid});
             let response = await res.data;
 
             setBooked(response);

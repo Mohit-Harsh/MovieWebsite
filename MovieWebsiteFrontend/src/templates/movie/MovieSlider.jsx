@@ -10,8 +10,6 @@ import { Context } from '../../App';
 
 export default function MovieSlider({heading,data})
 {
-    
-    const [mode,setMode,cards] = useContext(Context);
 
     let more = ""
 
@@ -60,7 +58,7 @@ export default function MovieSlider({heading,data})
 
 
     return(<>
-        <div className={styles.movcont}>
+        <div style={{display:(data.length==0)?'none':''}} className={styles.movcont}>
                     
             <div style={{width:'95%',margin:'auto',position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <button onClick={()=>handlePrev(heading)} className={styles.prev} style={{display:data.length>5?'flex':'none'}}><img src={prev} alt="" style={{width:'60%',height:'auto'}}/></button>

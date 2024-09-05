@@ -26,7 +26,7 @@ public class UserController
     public void setRecommendations(@RequestBody List<UUID> mids, @PathVariable UUID userid)
     {
         MovieUser user = repo.findById(userid).get();
-        user.setRecommendation(mrepo.findAllById(mids));
+        user.setRecommendation(mids);
         repo.save(user);
     }
 

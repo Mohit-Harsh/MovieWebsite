@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
+@CrossOrigin("http://localhost:5173")
 @RestController
 @RequestMapping("/api/visit")
 public class VisitController
@@ -16,15 +17,9 @@ public class VisitController
     private RabbitTemplate rabbitTemplate;
 
     @PostMapping("")
-    public void newVisit(@RequestBody Map<String,UUID> req)
+    public void newVisit(@RequestBody Visited visited)
     {
-
-        Visited visited = new Visited();
-        visited.setMid(req.get("mid"));
-        visited.setUserid(req.get("userid"));
-
         System.out.println(visited);
-
         rabbitTemplate.convertAndSend("topic_exchange","visit_route",visited);
     }
 }

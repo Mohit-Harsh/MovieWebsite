@@ -31,6 +31,8 @@ public class VisitController
         {
             List<Visited> v = repo.findAllByUserid(visited.getUserid());
 
+            System.out.println(visited);
+
             Visited v2 = repo.findByUseridAndMid(visited.getUserid(), visited.getMid());
 
             if (v2 != null) {
@@ -53,7 +55,7 @@ public class VisitController
         }
         catch (Exception e)
         {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
 
     }

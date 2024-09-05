@@ -21,7 +21,7 @@ export default function Login({setUid})
             let data = await res.data;
             if(data["success"]!=undefined)
             {
-                setUid(data["sucess"]);
+                setUid(data["success"]);
             }
         }
         if(cred[0]!="" && cred[1]!="")

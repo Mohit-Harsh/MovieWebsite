@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -45,9 +46,10 @@ public class BookingController
                 if (seatAvailable(seat, seatBookDTO.getSid(), date)) {
                     Booking booking = new Booking();
                     booking.setShowid(seatBookDTO.getSid());
-
+                    booking.setUserid(seatBookDTO.getUid());
                     booking.setDate(date);
                     booking.setSeatno(seat);
+                    booking.setTimestamp(LocalDateTime.now());
 
                     Booking b = repo.save(booking);
 

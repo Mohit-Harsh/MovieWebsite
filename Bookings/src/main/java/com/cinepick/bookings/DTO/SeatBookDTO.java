@@ -12,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class SeatBookDTO
 {
+    private UUID uid;
     private UUID sid;
     private String date;
     private List<String> seats;

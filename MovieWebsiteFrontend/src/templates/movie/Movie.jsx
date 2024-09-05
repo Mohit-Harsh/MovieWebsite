@@ -1,22 +1,32 @@
 import styles from './Movie.module.css';
 import { useLocation } from 'react-router-dom';
 import { Context } from '../../App';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import MovieSlider from './MovieSlider';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import Footer from '../home/Footer';
+import axios from 'axios';
 
-export default function Movie()
+export default function Movie({uid})
 {
 
-    const [mode,setMode,cards,city] = useContext(Context);
     const obj = useLocation();
+
+    useEffect(()=>{
+
+        function visited()
+        {
+            axios.post("http://localhost:8080/api/visit",{"userid":uid,"mid":obj.state['mid']})
+        }
+
+        visited();
+
+    },[])
 
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
     return(<>
-
         
         <div className={styles.containerDiv}>
 

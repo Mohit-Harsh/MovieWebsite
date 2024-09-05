@@ -8,25 +8,23 @@ import { useContext,useEffect,useState } from 'react';
 import axios from 'axios';
 import Footer from './Footer.jsx';
 
-export default function Home()
+export default function Home({uid,recommended})
 {
 
     const [mode,setMode,cards,city] = useContext(Context);
 
-    const[current,setCurrent] = useState([]);
-    const[upcoming,setUpcoming] = useState([]);
-    const[recommend,setRecommend] = useState([]);
+    const [data,setData] = useState({current:[],upcoming:[]});
 
     async function fetchData()
     {
         let res = await axios.get(`http://localhost:8080/api/movie/city/${city}`);
-        let data = await res.data;
-        setCurrent(data);
+        let d = await res.data;
+        setData({current:d,upcoming:d});
     }
 
     useEffect(()=>{fetchData();},[city]);
     
-    if(current == [])
+    if(data.current == [])
     {
         return(<></>)
     }
@@ -39,11 +37,11 @@ export default function Home()
                 
                 <Nav cards={cards}></Nav>
 
-                <MovieSlider heading={"Recommended Movies"} data={current}></MovieSlider>
+                <MovieSlider heading={"Recommended Movies"} data={recommended}></MovieSlider>
 
-                <MovieSlider heading={"Currently Playing"} data={current}></MovieSlider>
+                <MovieSlider heading={"Currently Playing"} data={data.current}></MovieSlider>
 
-                <MovieSlider heading={"Upcoming Movies"} data={current}></MovieSlider>
+                <MovieSlider heading={"Upcoming Movies"} data={data.upcoming}></MovieSlider>
 
                 <About mode={mode}></About>
 

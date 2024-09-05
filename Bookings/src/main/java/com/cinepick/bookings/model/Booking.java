@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -28,7 +29,7 @@ public class Booking
     private Date date;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp timestamp;
+    private LocalDateTime timestamp;
 
     private String seatno;
     private UUID showid;

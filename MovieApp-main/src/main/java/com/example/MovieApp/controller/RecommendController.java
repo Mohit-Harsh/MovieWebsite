@@ -4,13 +4,12 @@ import com.example.MovieApp.repo.MovieRepo;
 import com.example.MovieApp.repo.UserRepo;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.*;
 import java.util.UUID;
 
+@CrossOrigin("http://localhost:5173")
 @RestController
 @RequestMapping("/api/recommendation")
 public class RecommendController
@@ -30,7 +29,9 @@ public class RecommendController
 
         rabbitTemplate.convertAndSend("topic_exchange","recommend_route",userid);
 
-        return urepo.findById(userid).get().getRecommendation();
+        List<UUID> uuids = urepo.findById(userid).get().getRecommendation();
+
+        return mrepo.findAllById(uuids);
 
     }
 }

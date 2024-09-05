@@ -38,6 +38,17 @@ function App() {
   const [movies,setMovies] = useState([])
   const [uid,setUid] = useState("");
 
+  const [recommended,setRecommended] = useState([]);
+    
+  useEffect(()=>{fetchRecom();},[uid]);
+
+  async function fetchRecom()
+  {
+      let res = await axios.get(`http://localhost:8080/api/recommendation/user/${uid}`);
+      let d = await res.data;
+      setRecommended(d);
+  }
+
 
   const cards = [{'id':1,'title':"Planet Of The Apes",'image':apes,'image_wide':apes_wide},
     {'id':2,'title':"Deadpool vs Wolverine",'image':dvsw,'image_wide':dvsw_wide},{'id':3,'title':"Kalki 2898 AD",'image':kalki,'image_wide':kalki_wide},
@@ -56,19 +67,20 @@ function App() {
   }
   else
   {
+    console.log(uid);
     return (
       <>
       <Context.Provider value={[mode,setMode,cards,city,setCity,movies,setMovies]}>
         <Routes>
           <Route path='/'>
-            <Route index element={<Home/>}/>
-            <Route path='movie/:name' element={<Movie/>}/>
+            <Route index element={<Home uid={uid} recommended={recommended}/>}/>
+            <Route path='movie/:name' element={<Movie uid={uid}/>}/>
             <Route path='current' element={<Movielist heading={'current'} />}/>
             <Route path='recommend' element={<Movielist heading={'current'} />}/>
             <Route path='upcoming' element={<Movielist heading={'current'} />}/>
             <Route path='book/:movie'>
               <Route index element={<Shows/>} />
-              <Route path='seats' element={<Seats/>}/>
+              <Route path='seats' element={<Seats uid={uid}/>}/>
             </Route>
           </Route>
         </Routes>
