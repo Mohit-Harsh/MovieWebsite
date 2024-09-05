@@ -24,20 +24,26 @@ public class RecommendController
     @RabbitListener(queues = {"recommend_queue"})
     public void getRecommendations(UUID userid)
     {
-
-        List<Visited> visited = repo.findAllByUserid(userid);
-
-        List<UUID> mids = new ArrayList<>();
-
-        for(Visited v:visited)
+        try
         {
-            mids.add(v.getMid());
+            List<Visited> visited = repo.findAllByUserid(userid);
+
+            List<UUID> mids = new ArrayList<>();
+
+            for (Visited v : visited) {
+                mids.add(v.getMid());
+            }
+
+            ArrayList<RecommendDTO> movies = restTemplate.postForObject("http://localhost:8080/api/movie/all", mids, ArrayList.class);
+
+            List<UUID> recommendations = restTemplate.postForObject("http://localhost:8000/api/recommend", movies, ArrayList.class);
+
+            restTemplate.postForObject("http://localhost:8080/api/user/"+userid.toString()+"/recommendation",recommendations, ArrayList.class);
         }
-
-        ArrayList<RecommendDTO> movies = restTemplate.postForObject("http://localhost:8080/api/movie/all",mids,ArrayList.class);
-
-        restTemplate.postForObject("http://localhost:8000/api/recommend",movies,ArrayList.class);
-
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
 }

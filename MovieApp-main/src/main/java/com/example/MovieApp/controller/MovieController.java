@@ -1,19 +1,14 @@
 package com.example.MovieApp.controller;
-
 import com.example.MovieApp.DTO.MovieDTO;
-import com.example.MovieApp.DTO.RecommendDTO;
 import com.example.MovieApp.model.*;
 import com.example.MovieApp.repo.MovieRepo;
 import com.example.MovieApp.repo.TheatreRepo;
-import org.hibernate.query.spi.Limit;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
+import com.example.MovieApp.DTO.RecommendDTO;
 
 @CrossOrigin("http://localhost:5173")
 @RestController

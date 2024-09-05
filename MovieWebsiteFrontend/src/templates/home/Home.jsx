@@ -2,53 +2,53 @@ import styles from './Home.module.css';
 import Nav from './Nav.jsx';
 import About from './About.jsx';
 import { Context } from '../../App.jsx';
-
+import Navbar from '../navbar/Navbar.jsx';
 import MovieSlider from '../movie/MovieSlider.jsx';
-import { useContext } from 'react';
+import { useContext,useEffect,useState } from 'react';
+import axios from 'axios';
+import Footer from './Footer.jsx';
 
 export default function Home()
 {
 
-    const [mode,setMode,cards] = useContext(Context);
+    const [mode,setMode,cards,city] = useContext(Context);
 
-    function handleNext(name)
+    const[current,setCurrent] = useState([]);
+    const[upcoming,setUpcoming] = useState([]);
+    const[recommend,setRecommend] = useState([]);
+
+    async function fetchData()
     {
-        let element = document.getElementsByName(name);
-        let l = element[0].clientWidth;
-        
-        for(let i=0;i<element.length;i++)
-        {
-            element[i].style.transform = `translateX(-${l}px)`;
-        }
-
-
+        let res = await axios.get(`http://localhost:8080/api/movie/city/${city}`);
+        let data = await res.data;
+        setCurrent(data);
     }
 
-    function handlePrev(name)
+    useEffect(()=>{fetchData();},[city]);
+    
+    if(current == [])
     {
-        let element = document.getElementsByName(name);
-        let l = element[0].clientWidth;
-
-        for(let i=0;i<element.length;i++)
-        {
-            element[i].style.transform = `translateX(0px)`;
-        }
+        return(<></>)
     }
-
+    else
     return(
         <>
+            <Navbar></Navbar>
             <div className={styles.container}>
+
+                
                 <Nav cards={cards}></Nav>
 
-                <MovieSlider heading={"Recommended Movies"}></MovieSlider>
+                <MovieSlider heading={"Recommended Movies"} data={current}></MovieSlider>
 
-                <MovieSlider heading={"Currently Playing"}></MovieSlider>
+                <MovieSlider heading={"Currently Playing"} data={current}></MovieSlider>
 
-                <MovieSlider heading={"Upcoming Movies"}></MovieSlider>
+                <MovieSlider heading={"Upcoming Movies"} data={current}></MovieSlider>
 
                 <About mode={mode}></About>
 
             </div>
+            <Footer></Footer>
         </>
     )
 }

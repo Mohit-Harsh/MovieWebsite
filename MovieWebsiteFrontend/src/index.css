@@ -55,6 +55,12 @@ li
   font-weight: 300;
 }
 
+span
+{
+  font-size: 12px;
+  font-weight: 400;
+}
+
 @media (max-width:1023px) 
 {
    p

@@ -1,9 +1,15 @@
+.containerDiv
+{
+    width: auto;
+    min-height: 70vh;
+}
+
 .container
 {
     height: 600px;
     width: 100%;
     margin: 0 auto;
-    background-position: 50% center;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     color: white;

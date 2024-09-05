@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../App';
 
-export default function MovieSlider({heading})
+export default function MovieSlider({heading,data})
 {
     
     const [mode,setMode,cards] = useContext(Context);
@@ -30,25 +30,31 @@ export default function MovieSlider({heading})
 
     function handleNext(name)
     {
-        let element = document.getElementsByName(name);
-        let l = element[0].clientWidth;
-        
-        for(let i=0;i<element.length;i++)
+        if(data.length>5)
         {
-            element[i].style.transform = `translateX(-${l}px)`;
-        }
 
+            let element = document.getElementsByName(name);
+            let l = element[0].clientWidth;
+            
+            for(let i=0;i<element.length;i++)
+            {
+                element[i].style.transform = `translateX(-${l}px)`;
+            }
+        }   
 
     }
 
     function handlePrev(name)
     {
-        let element = document.getElementsByName(name);
-        let l = element[0].clientWidth;
-
-        for(let i=0;i<element.length;i++)
+        if(data.length>5)
         {
-            element[i].style.transform = `translateX(0px)`;
+            let element = document.getElementsByName(name);
+            let l = element[0].clientWidth;
+
+            for(let i=0;i<element.length;i++)
+            {
+                element[i].style.transform = `translateX(0px)`;
+            }
         }
     }
 
@@ -57,7 +63,7 @@ export default function MovieSlider({heading})
         <div className={styles.movcont}>
                     
             <div style={{width:'95%',margin:'auto',position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <button onClick={()=>handlePrev(heading)} className={styles.prev}><img src={prev} alt="" style={{width:'60%',height:'auto'}}/></button>
+                <button onClick={()=>handlePrev(heading)} className={styles.prev} style={{display:data.length>5?'flex':'none'}}><img src={prev} alt="" style={{width:'60%',height:'auto'}}/></button>
                 <div style={{width:'95%',overflow:'hidden'}}>
                     <div className={styles.movielist_header}>
                         <h1>{heading}</h1>
@@ -65,15 +71,15 @@ export default function MovieSlider({heading})
                     </div>
                     <div className={styles.moviediv}>
                         <div name={heading} className={styles.movielist}>
-                            {cards.slice(0,5).map((element,key)=><Item key={key} item={element}></Item>)}
+                            {data.slice(0,5).map((element,key)=><Item key={key} item={element}></Item>)}
                         </div>
                         <div name={heading} className={styles.movielist}>
-                            {cards.slice(5,10).map((element,key)=><Item key={key} item={element}></Item>)}
+                            {data.length>5?(data.slice(5,10).map((element,key)=><Item key={key} item={element}></Item>)):<></>}
                         </div>
                     </div>
                     
                 </div>
-                <button onClick={()=>handleNext(heading)} className={styles.next}><img src={next} alt="" style={{width:'60%',height:'auto'}}/></button>
+                <button onClick={()=>handleNext(heading)} className={styles.next} style={{display:data.length>5?'flex':'none'}}><img src={next} alt="" style={{width:'60%',height:'auto'}}/></button>
             </div>
             
         </div>

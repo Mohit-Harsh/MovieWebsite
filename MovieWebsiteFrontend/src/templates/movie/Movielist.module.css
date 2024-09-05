@@ -1,9 +1,9 @@
 .container
 {
     width: 80%;
+    min-height: 70vh;
     display: grid;
     grid-template-columns: 3fr 7fr;
-    height: fit-content;
     margin: 30px auto;
 }
 

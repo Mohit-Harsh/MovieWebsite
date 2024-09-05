@@ -1,0 +1,120 @@
+.container
+{
+    min-height: 60vh;
+    width: 80%;
+    margin: 50px auto;
+    padding: 0;
+}
+
+.date
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date > div
+{
+    display: flex;
+}
+
+.datebtnActive
+{
+    height: 100%;
+    width: fit-content;
+    margin: 0 10px;
+    color: white;
+    background-color: orangered;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.datebtnInactive
+{
+    height: 100%;
+    width: fit-content;
+    margin: 0 10px;
+    background-color: transparent;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.datebtnInactive > h5
+{
+    font-size: 16px;
+    font-weight: 600;
+    
+}
+
+.datebtnActive > h5
+{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.datebtnInactive > p
+{
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.datebtnActive > p
+{
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.datebtnInactive:hover
+{
+    color:orangered;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.showdiv
+{
+    display: block;
+    margin: 30px auto;
+}
+
+.theatre
+{
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    border-top: 1px solid rgba(128, 128, 128, 0.5);
+    padding-top: 30px;
+}
+
+.theatre_name
+{
+    margin-bottom: 50px;
+}
+
+.theatre_name > h4
+{
+    margin: 0;
+}
+
+.showbtn
+{
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid green;
+    color: green;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+
+.showbtn > p
+{
+    margin: 0;
+    padding: 0;
+}
+

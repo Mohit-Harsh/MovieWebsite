@@ -3,7 +3,6 @@ from pydantic import BaseModel
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from typing import List
-import json
 
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2",cache_folder="./allminilm")
 vectorstore = FAISS.load_local("MovieVectorStore",index_name='movie_embeddings',embeddings=embedding_model,allow_dangerous_deserialization=True)
@@ -36,6 +35,19 @@ async def create_item(movie: Movie):
 @app.post("/api/recommend")
 async def get_item(visited: List[Movie]):
 
-    print(visited)
+    recommendations = []
 
-    return [v.mid for v in visited]
+    for v in visited:
+
+        title = embedding_model.embed_query(v.title);
+        genre = embedding_model.embed_query(v.genre);
+        plot = embedding_model.embed_query(v.plot);
+        cast = embedding_model.embed_query(v.cast);
+
+        embedding = title+genre+plot+cast
+
+        r = [x.page_content for x in vectorstore.similarity_search_by_vector(embedding=embedding,k=3)[1:]]
+
+        recommendations.extend(r)
+
+    return recommendations

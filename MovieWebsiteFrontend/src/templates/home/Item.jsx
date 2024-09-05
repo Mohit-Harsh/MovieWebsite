@@ -9,14 +9,14 @@ export default function Item({item})
 
     return(
         <> 
-            <button className={styles.itemcont}  style={{backgroundImage:`url(${item['image']})`}}>
+            <button className={styles.itemcont}  style={{backgroundImage:`url(${item['poster']})`}}>
                 <Link style={{textDecoration:'none',color:'white'}} to={`/movie/${name}`} state={item}>
                     <div className={styles.item}>
                         <h4>{item['title']}</h4>
-                        <p>20 April</p>
-                        <p style={{color:'white'}}>13+</p>
+                        <p>{item['releaseDate']}</p>
+                        <p style={{color:'white'}}>{item['certificate']}</p>
                         <div style={{marginBottom:'10px'}}>
-                            {['English','Hindi','Telugu'].map((element,key)=><span key={key}>{element}</span>)}
+                            <span >{item['lang']}</span>
                         </div>
                     </div>
                 </Link>

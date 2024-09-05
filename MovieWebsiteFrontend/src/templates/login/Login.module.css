@@ -1,0 +1,76 @@
+.container
+{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(38,38,38);
+    border-radius: 10px;
+    margin: 100px auto;
+    padding: 50px;
+}
+
+.container > form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.container > form > input
+{
+    display: block;
+    width: 200px;
+    height: fit-content;
+    padding: 10px;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin: 10px 0px;
+}
+.container > form > input:focus
+{
+    outline: none;
+}
+.container > form > button
+{
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 20px;
+    color: white;
+    background-color: #2196f3;
+    border-radius: 5px;
+    transition: all 0.2s;
+    border: none;
+    margin-top: 30px;
+}
+
+.container > form > button:hover
+{
+    background-color: #1769aa;
+    transition: all 0.2s;
+}
+
+.container > button
+{
+    background-color: transparent;
+    border: none;
+    color: gray;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.container > button:hover
+{
+
+    opacity: 1;
+    transition: all 0.2s;
+}

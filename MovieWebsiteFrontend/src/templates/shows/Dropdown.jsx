@@ -3,18 +3,18 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import * as React from 'react';
 import { useContext } from 'react';
 import { Context } from '../../App';
-import { useState,useRef,useEffect } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
-export default function Dropdown({name,options,setCity})
+export default function Dropdown({name,options,setType})
 {
 
-    const [mode,setMode,cards,city] = useContext(Context);
+    const [mode] = useContext(Context);
 
     function handleDrop()
     {
         let element = document.getElementById(name+"_dropdown_list");
-
-        console.log(element);
 
         if(element.style.getPropertyValue('visibility') == 'hidden')
         {
@@ -44,7 +44,7 @@ export default function Dropdown({name,options,setCity})
     {
         document.getElementById(name+"_dropdown_text").innerHTML = event.target.innerText;
         handleDrop();
-        setCity(event.target.innerText);
+        setType(event.target.innerText);
     }
 
     function handleHover(event)
@@ -60,7 +60,7 @@ export default function Dropdown({name,options,setCity})
 
     return (
         <>
-            <div id={name+"_dropdown"} className={styles.dropdown}>
+            <div id={name+"_dropdown"} className={styles.dropdown} style={{backgroundColor:mode?'rgb(38,38,38)':'whitesmoke'}}>
 
                 <div onClick={handleDrop} style={{color:mode?'rgb(255,255,255,0.7)':'black'}} id={name+"_dropdown_select"} className={styles.dropdown_select}>
 
@@ -69,7 +69,7 @@ export default function Dropdown({name,options,setCity})
 
                 </div>
 
-                <div id={name+"_dropdown_list"} className={styles.dropdown_list} style={{backgroundColor:mode?'rgb(38,38,38)':'white',visibility:'hidden'}}>
+                <div id={name+"_dropdown_list"} className={styles.dropdown_list} style={{backgroundColor:mode?'rgb(38,38,38)':'whitesmoke',visibility:'hidden'}}>
                     
                     {options.map((item,key)=><div style={{color:'gray'}} onMouseOut={handleOut} onMouseOver={handleHover} onClick={handleSelect} key={key} className={styles.dropdown_item}>{item}</div>)}
 

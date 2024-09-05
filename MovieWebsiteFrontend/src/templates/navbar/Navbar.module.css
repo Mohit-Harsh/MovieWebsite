@@ -3,7 +3,6 @@
     position:sticky;
     background-color: rgb(18,18,18);
     top: 0;
-    box-shadow: 0px 0px 8px 4px rgb(0,0,0,0.6);
     display: flex;
     width: auto;
     flex-direction: row;

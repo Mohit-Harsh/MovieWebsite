@@ -25,7 +25,9 @@ public class UserController
     @PostMapping("/{userid}/recommendation")
     public void setRecommendations(@RequestBody List<UUID> mids, @PathVariable UUID userid)
     {
-        repo.findById(userid).get().setRecommendation(mrepo.findAllById(mids));
+        MovieUser user = repo.findById(userid).get();
+        user.setRecommendation(mrepo.findAllById(mids));
+        repo.save(user);
     }
 
     @PostMapping("/signin")

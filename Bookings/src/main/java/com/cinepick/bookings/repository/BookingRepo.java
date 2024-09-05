@@ -1,7 +1,6 @@
-package com.example.MovieApp.repo;
+package com.cinepick.bookings.repository;
 
-import com.example.MovieApp.model.Booking;
-import com.example.MovieApp.model.BookingStatus;
+import com.cinepick.bookings.model.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,0 +1,113 @@
+
+.navdiv
+{
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.container
+{
+    min-height: 60vh;
+    max-height: fit-content;
+    width: auto;
+}
+
+.seatsdiv
+{
+    width: fit-content;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+}
+.rowdiv
+{
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    align-items: center;
+    column-gap: 30px;
+    padding: 0; 
+}
+.rowdiv>h5
+{
+    width: 20px;
+    margin: 0;
+}
+.row
+{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.seatbtn
+{
+    height: 30px;
+    width: 30px;
+    font-size: 12px;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid green;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    cursor: pointer;
+}
+
+.seatbtnActive
+{
+    height: 30px;
+    width: 30px;
+    font-size: 12px;
+    text-align: center;
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    cursor: pointer;
+}
+
+
+.seatbtn:hover
+{
+    background-color: green;
+    color: white;
+    
+}
+
+.seatbtn:disabled
+{
+    border: 1px solid orangered;
+    background-color: orangered;
+    color: white;
+    cursor: not-allowed;
+}
+
+.buydiv
+{
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.buynow
+{
+    border: none;
+    padding: 10px 20px;
+    background-color: orangered;
+    color: white;
+    font-size: 14px;
+    margin: 20px auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
